@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جمعية هاد | Haad Society Portal</title>
+  <link rel="icon" href="https://lh3.googleusercontent.com/d/1Rp11SnCeTs-PTIJ_4BVEhWbxlpkyaYG7">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #13313D; }
+    iframe { position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+  <iframe id="portalFrame" allow="clipboard-read; clipboard-write"></iframe>
+
+  <script>
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwqgqiTTHZ3Wc8H2Az6OjChHe945qJqfmg4BsGAy3IsmIEDMKnv5kEpHzanJqSkDL31Qw/exec";
+
+    // Short & Sweet URL Mapping (மொழி மற்றும் ஆசிரியர் பெயருடன் கூடிய சுருக்கமான லிங்க்குகள்)
+    const ROUTE_MAP = {
+      "/ur-abdulmajid": "?page=teacher&tid=UR1",
+      "/ur-zubair":     "?page=teacher&tid=UR2",
+      "/ta":            "?page=teacher&tid=TA1",
+      "/ne":            "?page=teacher&tid=NE1",
+      "/hi":            "?page=teacher&tid=HI1",
+      "/ps":            "?page=teacher&tid=PS1",
+      "/bn-sharaf":     "?page=teacher&tid=BN1",
+      "/bn-kafi":       "?page=teacher&tid=BN2",
+      "/tl":            "?page=teacher&tid=TL1",
+      "/en":            "?page=teacher&tid=EN1"
+    };
+
+    const cleanPath = window.location.pathname.toLowerCase().replace(/\/$/, "");
+    let finalQuery = window.location.search;
+
+    if (ROUTE_MAP[cleanPath]) {
+      finalQuery = ROUTE_MAP[cleanPath];
+    }
+
+    document.getElementById('portalFrame').src = GAS_WEB_APP_URL + finalQuery;
+  </script>
+</body>
+</html>
